@@ -1,6 +1,6 @@
 <?php
 
-namespace CodexSoft\Code\Helpers;
+namespace CodexSoft\Code\Files;
 
 use Psr\Log\LoggerInterface;
 
