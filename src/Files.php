@@ -59,7 +59,10 @@ class Files
                 /** @noinspection NotOptimalRegularExpressionsInspection */
                 if (!preg_match($pattern,$name)) {
                     if ($recursively && is_dir($path.'/'.$name)) {
-                        \array_push($files, ...self::listFilesWithPath($path.'/'.$name, $recursively, $prefix ? $prefix.'/'.$name.'/' : $name.'/', $pattern));
+                        $filesInPath = self::listFilesWithPath($path.'/'.$name, $recursively, $prefix ? $prefix.'/'.$name.'/' : $name.'/', $pattern);
+                        if ($filesInPath) {
+                            \array_push($files, ...$filesInPath);
+                        }
                         //$files[$name] = self::listFilesWithPath($path.'/'.$name, $recursively, $prefix ? $prefix.'/'.$name : $name);
                     } else {
                         $files[] = $prefix.$name;
